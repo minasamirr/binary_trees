@@ -9,26 +9,27 @@
  *         ancestor was found
  */
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
-                                     const binary_tree_t *second)
+		const binary_tree_t *second)
 {
-    const binary_tree_t *ancestor = NULL;
-    const binary_tree_t *current;
+	const binary_tree_t *ancestor = NULL;
+	const binary_tree_t *current;
 
-    if (!first || !second)
-        return (NULL);
+	if (!first || !second)
+		return (NULL);
 
-    current = first;
-    while (current)
-    {
-        const binary_tree_t *tmp = second;
-        while (tmp)
-        {
-            if (current == tmp)
-                return ((binary_tree_t *)current);
-            tmp = tmp->parent;
-        }
-        current = current->parent;
-    }
+	current = first;
+	while (current)
+	{
+		const binary_tree_t *tmp = second;
 
-    return ((binary_tree_t *)ancestor);
+		while (tmp)
+		{
+			if (current == tmp)
+				return ((binary_tree_t *)current);
+			tmp = tmp->parent;
+		}
+		current = current->parent;
+	}
+
+	return ((binary_tree_t *)ancestor);
 }
