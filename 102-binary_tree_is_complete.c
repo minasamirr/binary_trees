@@ -16,7 +16,8 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	left_height = binary_tree_height(tree->left);
 	right_height = binary_tree_height(tree->right);
 
-	return (1 + (left_height > right_height ? left_height : right_height));
+	return (1 + (left_height > right_height ?
+				left_height : right_height));
 }
 
 /**
@@ -30,7 +31,8 @@ size_t binary_tree_size(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
+	return (1 + binary_tree_size(tree->left) +
+			binary_tree_size(tree->right));
 }
 
 /**
@@ -53,7 +55,8 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_is_complete_util - Utility function to check if a binary tree is complete
+ * binary_tree_is_complete_util - Utility function to check if a binary tree
+ * is complete
  * @tree: Pointer to the root node of the tree to check
  * @index: Index of the current node
  * @size: Size of the tree
@@ -61,7 +64,8 @@ int binary_tree_is_complete(const binary_tree_t *tree)
  *
  * Return: 1 if the tree is complete, 0 otherwise
  */
-int binary_tree_is_complete_util(const binary_tree_t *tree, size_t index, size_t size, size_t height)
+int binary_tree_is_complete_util(const binary_tree_t *tree, size_t index,
+		size_t size, size_t height)
 {
 	if (tree == NULL)
 		return (1);
@@ -69,6 +73,8 @@ int binary_tree_is_complete_util(const binary_tree_t *tree, size_t index, size_t
 	if (index >= size)
 		return (0);
 
-	return (binary_tree_is_complete_util(tree->left, 2 * index + 1, size, height - 1) &&
-		binary_tree_is_complete_util(tree->right, 2 * index + 2, size, height - 1));
+	return (binary_tree_is_complete_util(tree->left, 2 * index + 1, size,
+				height - 1) &&
+			binary_tree_is_complete_util(tree->right,
+				2 * index + 2, size, height - 1));
 }
